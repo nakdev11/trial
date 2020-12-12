@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Update Page</title>
+	</head>
+	<body>
+		<h1 th:text="${heading}">Test Heading</h1>
+		<form method="post" action="/update" th:object="${updateForm}">
+			<ul th:each="error : ${#fields.detailedErrors()}">
+				<li th:text="${error.message}"></li>
+			</ul>
+			<table>
+				<tr>
+					<th>ID</th>
+					<td><input type="text" name="id" th:field="*{id}" readonly /></td>
+				</tr>
+				<tr>
+					<th>NAME</th>
+					<td><input type="text" name="name" th:field="*{name}"/></td>
+				</tr>
+				<tr>
+					<th>AGE</th>
+					<td><input type="text" name="age" th:field="*{age}"/></td>
+				<tr>
+					<th>EMAIL</th>
+					<td><input type="text" name="email" th:field="*{email}"/><td>
+				</td>
+			</table>
+			<a th:href="@{/}">戻る</a>
+			<input type="submit" value="更新" />
+		</form>
+	</body>
+</html>

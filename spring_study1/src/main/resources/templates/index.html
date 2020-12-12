@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>勉強会</title>
+	</head>
+	<body>
+		<h1>Test Heading</h1>
+		<!-- <p th:text="${persons}"></p> -->
+		<form method="post" action="/" th:object="${searchForm}">
+			ID
+			<input type="text" name="id" th:field="*{id}"/>
+			<button type="submit" name="search">検索</button>
+			<ul th:each="error : ${#fields.detailedErrors()}">
+				<li th:text="${error.message}"></li>
+			</ul>
+		</form>
+		<a th:href="@{/register}">新規登録はこちら</a>
+<!-- 		<form method="get" action="/">
+			<button type="submit" name="register">登録</button>
+		</form> -->
+		<hr />
+		<table>
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>age</th>
+				<th>email</th>
+			</tr>
+			<tr th:each="person:${persons}">
+				<td th:text="${person.id}"></td>
+				<td th:text="${person.name}"></td>
+				<td th:text="${person.age}"></td>
+				<td th:text="${person.email}"></td>
+				<td><a th:href="@{/update(id=${person.id})}">更新</a></td>
+				<td><a th:href="@{/delete(id=${person.id})}">削除</a></td>
+			</tr>
+		</table>
+	</body>
+</html>
