@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>勉強会 外部API呼び出し</title>
+	</head>
+	<body>
+		<h1 th:text="${msg}"></h1>
+		<form method="post" action="/">
+			店舗名
+			<input type="text" name="name" />
+			<input type="submit" value="検索" />
+		</form>
+	</body>
+</html>

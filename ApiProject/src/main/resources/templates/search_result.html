@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>勉強会 外部API呼び出し</title>
+	</head>
+	<body>
+		<h1 th:text="${msg}"></h1>
+		<table>
+			<tr>
+				<th>店舗名</th>
+				<th>カテゴリ</th>
+				<th>住所</th>
+				<th>tel</th>
+				<th>店舗画像</th>
+			</tr>
+			<tr th:each="rest : ${restList}" >
+				<td th:text="${rest.name}"></td>
+				<td th:text="${rest.category}"></td>
+				<td th:text="${rest.address}"></td>
+				<td th:text="${rest.tel}"></td>
+				<td><img th:src="${rest.imageUrl.getShopImage1()}"></td>
+			</tr>
+		</table>
+		<a th:href="@{/}">戻る</a>
+	</body>
+</html>
