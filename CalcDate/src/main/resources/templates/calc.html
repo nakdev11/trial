@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>日付計算アプリ</title>
+	</head>
+	<body>
+		<h1>計算基準日を入力してください</h1>
+		<form method="post" action="/calc" th:object="${baseDateForm}">
+			<input type="text" name="baseDate" th:field="*{baseDate}"  />
+			<input type="submit" value="計算実行">
+			<a th:href="@{/register}">日付計算式を登録する</a>
+		</form>
+		<hr />
+		<table>
+			<tr>
+				<th>日付ID</th>
+				<th>日付名称</th>
+				<th>計算結果</th>
+				<th>計算式(年/月/日)</th>
+			</tr>
+			<tr th:each="calcResult:${calcResults}">
+				<td th:text="${calcResult.dateId}"></td>
+				<td th:text="${calcResult.dateName}"></td>
+				<td th:text="${calcResult.resultDate}"></td>
+				<td th:text="${calcResult.formula}"></td>
+				<td><a th:href="@{/update(dateId=${calcResult.dateId})}">更新</a></td>
+				<td><a th:href="@{/delete(dateId=${calcResult.dateId})}">削除</a></td>
+			</tr>
+		</table>
+	</body>
+</html>

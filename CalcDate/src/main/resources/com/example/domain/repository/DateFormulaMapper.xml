@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.domain.repository.DateFormulaMapper">
+
+	<resultMap type="com.example.domain.model.DateFormula" id="map1">
+		<id column="date_id" property="dateId"></id>
+		<result column="date_name" property="dateName"></result>
+		<result column="calc_value_y" property="calcValueY"></result>
+		<result column="calc_value_m" property="calcValueM"></result>
+		<result column="calc_value_d" property="calcValueD"></result>
+	</resultMap>
+
+	<select id="selectOne" resultMap="map1" parameterType="string">
+		select * from calc_date_tbl where date_id = #{dateId}
+	</select>
+
+	<!-- <select id="selectMany" resultType="com.example.domain.model.DateFormula"> -->
+	<!-- <select id="selectMany" resultMap="calc_date_tbl" resultType="com.example.domain.model.DateFormula"> -->
+	<select id="selectMany" resultMap="map1">
+		select * from calc_date_tbl
+	</select>
+	
+	<insert id="insertOne" parameterType="com.example.domain.model.DateFormula">
+		insert into calc_date_tbl (
+			date_id,
+			date_name,
+			calc_value_y,
+			calc_value_m,
+			calc_value_d)
+		values (
+			#{dateId},
+			#{dateName},
+			#{calcValueY},
+			#{calcValueM},
+			#{calcValueD}
+		)
+	</insert>
+
+	<update id="updateOne" parameterType="com.example.domain.model.DateFormula">
+		update calc_date_tbl
+		set date_name = #{dateName},
+			calc_value_y = #{calcValueY},
+			calc_value_m = #{calcValueM},
+			calc_value_d = #{calcValueD}
+		where date_id = #{dateId}
+	</update>
+	
+	<delete id="deleteOne" parameterType="string">
+		delete from calc_date_tbl where date_id = #{dateId}
+	</delete>
+		
+</mapper>
