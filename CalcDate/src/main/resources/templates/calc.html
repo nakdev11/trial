@@ -8,6 +8,11 @@
 		<h1>計算基準日を入力してください</h1>
 		<form method="post" action="/calc" th:object="${baseDateForm}">
 			<input type="text" name="baseDate" th:field="*{baseDate}"  />
+			<ul>
+				<li th:each="error : ${#fields.detailedErrors()}">
+					<span th:text="${error.message}"></span>
+				</li>
+			</ul>
 			<input type="submit" value="計算実行">
 			<a th:href="@{/register}">日付計算式を登録する</a>
 		</form>

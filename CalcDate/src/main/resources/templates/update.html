@@ -29,6 +29,11 @@
 					<td><input type="text" name="calcValueD" th:field="*{calcValueD}" /></td>
 				</tr>
 			</table>
+			<ul>
+				<li th:each="error : ${#fields.detailedErrors()}">
+					<span th:text="${error.message}"></span>
+				</li>
+			</ul>
 			<a th:href="@{'/calc'}">戻る</a>
 			<input type="submit" value="更新">
 		</form>

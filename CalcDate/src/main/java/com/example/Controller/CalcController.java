@@ -42,7 +42,7 @@ public class CalcController {
 	
 	@PostMapping("/calc")
 	public String postCalc(
-			@ModelAttribute @Validated BaseDateForm form,
+			@Validated @ModelAttribute BaseDateForm form,
 			BindingResult result,
 			Model model) {
 		
@@ -53,7 +53,7 @@ public class CalcController {
 		System.out.println(form.getBaseDate());
 		List<CalcResult> calcResults = calcService.calc(form.getBaseDate());
 		model.addAttribute("calcResults", calcResults);
-		model.addAttribute("baseDate", form.getBaseDate());
+		model.addAttribute("sessionBaseDate", form.getBaseDate());
 		
 		return "calc";
 	}
@@ -66,7 +66,7 @@ public class CalcController {
 	
 	@PostMapping("/register")
 	public String postRegister(
-			@ModelAttribute @Validated DateFormula dateFormula,
+			@Validated @ModelAttribute DateFormula dateFormula,
 			BindingResult result,
 			Model model) {
 		if (result.hasErrors()) {

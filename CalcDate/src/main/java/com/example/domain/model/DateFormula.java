@@ -5,27 +5,24 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-
 public class DateFormula {
 	
 	@NotNull
-	@NotBlank
 	private String dateId;
 	
-	@NotNull
 	@NotBlank
 	private String dateName;
 	
-	@Min(0)
-	@Max(9999)
+	@Min(-100)
+	@Max(100)
 	private int calcValueY;
 	
-	@Min(0)
-	@Max(9999)
+	@Min(-12)
+	@Max(12)
 	private int calcValueM;
 	
-	@Min(0)
-	@Max(9999)
+	@Min(-365)
+	@Max(365)
 	private int calcValueD;
 	
 	public String getDateId() {
